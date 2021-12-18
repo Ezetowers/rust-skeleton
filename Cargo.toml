@@ -1,13 +1,12 @@
 [package]
-name = "rust-skeleton"
-version = "0.1.0"
+name = "minigrep"
+version = "0.0.1"
 authors = ["Ezequiel Torres Feyuk <ezequiel.torresfeyuk@gmail.com>"]
-edition = "2018"
+edition = "2021"
 
 [[bin]]
-name = "rust-skeleton"
+name = "minigrep"
 path = "src/main.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-[dependencies]
-amiquip = "0.3.3"
+# [dependencies]

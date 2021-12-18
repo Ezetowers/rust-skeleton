@@ -1,5 +1,5 @@
-FROM rust:1.44.1
-ARG PROJECT_NAME=rust-skeleton
+FROM rust:1.57.0
+ARG PROJECT_NAME=minigrep
 
 # Do not use or modify. A dummy main program (src/main.rs) is added and built
 # to load the dependencies of the project and cache them.
@@ -16,6 +16,5 @@ COPY ./src ./src
 RUN cargo build --release
 
 FROM deploy-base:latest
-ARG PROJECT_NAME=rust-skeleton
-COPY --from=0 /${PROJECT_NAME}/target/release/producer \
-    /$PROJECT_NAME/target/release/consumer /
+ARG PROJECT_NAME=minigrep
+COPY --from=0 /${PROJECT_NAME}/target/release/minigrep /

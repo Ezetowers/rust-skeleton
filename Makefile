@@ -2,8 +2,7 @@ SHELL := /bin/bash
 PWD := $(shell pwd)
 
 GIT_REMOTE = github.com/Ezetowers/rust-skeleton
-PROJECT_NAME = rust-skeleton
-
+PROJECT_NAME = minigrep
 default: build
 
 all:
