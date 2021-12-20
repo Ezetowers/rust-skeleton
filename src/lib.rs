@@ -29,6 +29,41 @@ impl Config {
 // be used here. This is the correct way in Rust to return nothing
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(config.filename)?;
-    println!("With text:\n{}", contents);
     Ok(())
+}
+
+// Take a look at the lifetime of this function. The return value is a 
+// vector of strings, and that vector can be filled up with both
+// the query or the contests input if we do not define anything. The
+// explicit lifetime definition here is telling to the compiler that 
+// the return values of the function will be values found in the 
+// contents variable and no the query variable
+pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    let mut results = Vec::new();
+
+    for line in contents.lines() {
+        if line.contains(query) {
+            results.push(line);
+        }
+    }
+
+    results
+}
+
+/******************************** Tests **************************************/
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn one_result() {
+        let query = "duct";
+        let contents = "\
+Rust:
+safe, fast, productive.
+Pick three.";
+
+        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
+    }
 }

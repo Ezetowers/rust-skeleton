@@ -24,9 +24,6 @@ fn main() {
     //     },
     // };
 
-    println!("Searching for {}", config.query);
-    println!("In file {}", config.filename);
-
     // Since the run function returns () in the Ok value of the Result,
     // there is nothing to unwrap and we can check the error directly
     if let Err(e) = rust_skeleton::run(config) {
