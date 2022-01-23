@@ -108,3 +108,57 @@ Trust me.";
         );
     }
 }
+
+
+
+/*****************************************************************************/
+
+pub trait Draw {
+    fn draw(&self);
+    fn description(&self) ->  &'static str;
+}
+
+pub struct Screen {
+    pub components: Vec<Box<dyn Draw>>,
+}
+
+impl Screen {
+    pub fn run(&self) {
+        for component in self.components.iter() {
+            println!("Drawing object: {}", component.description());
+            component.draw();
+        }
+    }
+}
+
+pub struct Button {
+    pub width: u32,
+    pub height: u32,
+    pub label: String,
+}
+
+impl Draw for Button {
+    fn draw(&self) {
+        // code to actually draw a button
+    }
+
+    fn description(&self) ->  &'static str {
+        "Button"
+    }
+}
+
+pub struct SelectBox {
+    pub width: u32,
+    pub height: u32,
+    pub options: Vec<String>,
+}
+
+impl Draw for SelectBox {
+    fn draw(&self) {
+        // code to actually draw a select box
+    }
+
+    fn description(&self) ->  &'static str {
+        "SelectBox"
+    }
+}
