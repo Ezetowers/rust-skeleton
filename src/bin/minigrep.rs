@@ -3,14 +3,12 @@ use std::process;
 use rust_skeleton::Config;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-
     // Error managed with closures (not seeing yet). Closures are rust
     // anonymous functions. unwrap_or_else return the ok value from the
     // Result<Config, &str> (in this case, Config) if no error occurs,
     // and calls a function (the closure) if an error occurs
-    let config = Config::new(&args).unwrap_or_else(|error| {
-        println!("Problem parsing arguments: {}", error);
+    let config = Config::new(env::args()).unwrap_or_else(|err| {
+        println!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
 
