@@ -1,4 +1,4 @@
-FROM rust:1.57.0
+FROM rust:1.62.1
 ARG PROJECT_NAME=rust-skeleton
 
 # Do not use or modify. A dummy main program (src/main.rs) is added and built
