@@ -17,4 +17,5 @@ RUN cargo build --release
 
 FROM deploy-base:latest
 ARG PROJECT_NAME=rust-skeleton
+COPY --from=0 /${PROJECT_NAME}/target/release/webserver /
 COPY --from=0 /${PROJECT_NAME}/target/release/minigrep /

@@ -15,7 +15,7 @@ build-docker-base-images:
 	docker build -f ./dockerfiles/deploy-base.Dockerfile -t deploy-base:latest .
 .PHONY: build-docker-base-images
 
-docker-image:
+docker-image: build-docker-base-images
 	docker build --build-arg PROJECT_NAME=${PROJECT_NAME} -f Dockerfile -t "${PROJECT_NAME}:latest" .
 .PHONY: docker-image
 

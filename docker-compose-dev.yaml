@@ -1,35 +1,11 @@
 version: '3'
 services:
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    ports:
-      - 15672:15672 
-    networks:
-      network:
-
-  producer:
+  webserver:
     container_name: producer
     image: rust-skeleton:latest
-    entrypoint: /producer
+    entrypoint: /webserver
     volumes:
       - ./config:/config
-    depends_on:
-      - rabbitmq
-    links: 
-      - rabbitmq
-    networks:
-      network:
-
-  consumer:
-    container_name: consumer
-    image: rust-skeleton:latest
-    entrypoint: /consumer
-    volumes:
-      - ./config:/config
-    depends_on:
-      - rabbitmq
-    links: 
-      - rabbitmq
     networks:
       network:
 
